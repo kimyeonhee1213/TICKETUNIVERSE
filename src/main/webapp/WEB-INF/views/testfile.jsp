@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  커밋 테스트 </P>
+<P>  커밋 테스트2 </P>
 </body>
 </html>
