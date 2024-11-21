@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  안녕 연희얌 test파일입니다. </P>
+<P>  커밋 테스트 </P>
 </body>
 </html>
