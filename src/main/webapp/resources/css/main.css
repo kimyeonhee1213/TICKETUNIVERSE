@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+.headerDiv1 {
+	margin : 1px;
+	height : 100px;
+	padding-left : 10px;
+	padding-right : 30px;
+}
+
+.hImg {
+	float : left;
+	padding-top : 30px;
+	padding-left : 50px;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  float : left;
+  padding-top : 40px;
+  margin-left : 30px;
+}
+
+.scInput {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 25px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.scImg {
+  position : absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+  padding-top : 40px;
+}
+
+.fDiv {
+	margin : 1px;
+	height : 100px;
+	padding-left : 20px;
+	padding-top : 30px;
+}
+
+.fImg {
+	float : left;
+}
+
+.fp {
+	float : left;
+	padding-left : 70px;
+}
+
+.fp2 {
+	font-size : 13px;
+	color : grey;
+	margin-top : -10px;
+	margin-bottom : -10px;
+}
+
+.mainImg {
+	width : 190px;
+	height : 115px;
+	opacity: 0.5;
+	margin-left : 40px;
+	margin-top : 10px;
+}
+
+
+
+
+.headerDiv2 {
+	margin : 1px;
+	height : 100px;
+	padding-left : 10px;
+	padding-right : 30px;
+}
+
+.menu {
+	width : 80%;
+	float : left;
+	height : 80px;
+}
+
+.login {
+	width : 20%;
+	float : left;
+	height : 80px;
+}
+#alogin {
+	color : black;
+}
+#alogin:hover {
+	font-weight: bold;
+}
+
+
+
+#topMenu {
+	height: 30px;  
+    width: 850px;  
+}
+
+/* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
+#topMenu ul {           
+	list-style-type: none;  
+	margin: 0px;            
+	padding: 0px;           
+}
+
+/* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
+#topMenu ul li {            
+	float: left;                
+	line-height: 35px;          
+	vertical-align: middle;     
+	text-align: center;         
+	position: relative;         
+}
+
+/* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
+.menuLink, .submenuLink {           
+	text-decoration:none;               
+	display: block;                     
+	width: 150px;                       
+	font-size: 16px;
+	color : black;                    
+	/* font-family: "Trebuchet MS", Dotum; */ 
+}
+
+/* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
+.topMenuLi:hover .menuLink {    
+	color: black;
+	font-weight: bold;                  
+}
+
+/* 좀 더 긴 메뉴 스타일 설정 */
+.longLink {     
+	width: 150px;   
+}
+
+/* 하위 메뉴의 a 태그 스타일 설정 */
+.submenuLink {          
+	color: #2d2d2d;             
+	background-color: white;    
+	margin-right: -1px;         /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설정 */
+}
+
+/* 하위 메뉴 스타일 설정 */
+.submenu {              
+	position: absolute;     
+	height: 0px;            
+	overflow: hidden;       
+	transition: height .2s; 
+	-webkit-transition: height .2s; 
+	-moz-transition: height .2s; 
+	-o-transition: height .2s; 
+	width: 574px;
+}
+
+/* 가로로 펼쳐지도록 설정 */
+.submenu li {
+	display: inline-block;  
+}
+
+/* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
+.topMenuLi:hover .submenu { 
+	height: 32px;
+}
+
+/* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
+.submenuLink:hover {        
+	color: black;
+	font-weight: bold;                 
+}
+
+
+
+.main_font1 {
+	font-size : 35px;
+	font-weight : bold;
+	text-align : center;
+}
+
