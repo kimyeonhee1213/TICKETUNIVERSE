@@ -21,7 +21,7 @@
             value="jdbc:mysql://localhost:3306/ticketuniverse?useSSL=false&amp;serverTimezone=UTC">
         </property>
         <property name="username" value="root"></property>
-        <property name="password" value="kyh991213"></property>
+        <property name="password" value="991213"></property>
     </bean>        
     
    

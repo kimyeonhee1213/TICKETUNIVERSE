@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	
 <div class="headerDiv1">
 	<div class="hImg">
@@ -45,12 +46,17 @@
 </div>
 <div class="login">
 	<ul class="nav justify-content-end">
-		<li class="nav-item">
-			<a class="nav-link active" id="alogin" aria-current="page" href="#">로그인</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link active" id="alogin" aria-current="page" href="#">회원가입</a>
-		</li>
+		<c:choose>
+			<c:when test="${sessionScope.user_id == null}">
+					<li class="nav-item"><a class="nav-link active" id="alogin" aria-current="page" href="${pageContext.request.contextPath}/users/login.do">로그인</a></li>
+					<li class="nav-item"><a class="nav-link active" id="ajoin" aria-current="page" href="#">회원가입</a></li>
+				</c:when>
+				<c:otherwise>
+					<!-- 로그인한 상태 -->
+					<li class="nav-item"><label style="padding-top: 8px;">${sessionScope.name}님이 로그인 중입니다</label></li>
+					<li class="nav-item"><a class="nav-link active" id="alogout" aria-current="page" href="${path}/users/logout.do">로그아웃</a></li>
+				</c:otherwise>
+		</c:choose>
 	</ul>
 </div>
 </div>

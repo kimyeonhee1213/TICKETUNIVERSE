@@ -1,8 +1,7 @@
 package pr.ticket.universe.model.users.dao;
 
-import java.util.List;
-
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -14,10 +13,22 @@ public class UsersDAOImpl implements UsersDAO {
 	
 	@Inject
 	SqlSession sqlSession;
+	
+	@Override
+	public boolean loginCheck(UsersDTO dto) {
+		String name = sqlSession.selectOne("users.loginCheck", dto);
+		return (name == null) ? false : true;
+	}
 
 	@Override
-	public List<UsersDTO> list() {
-		return sqlSession.selectList("users.list");
+	public UsersDTO viewMember(UsersDTO dto) {
+		return sqlSession.selectOne("users.viewUser", dto);
 	}
+
+	@Override
+	public void logout(HttpSession session) {
+		
+	}
+
 
 }

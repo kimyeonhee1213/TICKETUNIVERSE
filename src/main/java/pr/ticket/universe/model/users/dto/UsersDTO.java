@@ -67,6 +67,11 @@ public class UsersDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	@Override
+	public String toString() {
+		return "UsersDTO [user_id=" + user_id + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + ", role=" + role + ", created_date=" + created_date + ", modifided_date="
+				+ modifided_date + ", status=" + status + "]";
+	}
 	
 }

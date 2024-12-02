@@ -3,8 +3,15 @@
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="users">
-	<select id="list" resultType="pr.ticket.universe.model.users.dto.UsersDTO">
-	select user_id, password, name, phone, email
-	from users
+	<select id="loginCheck" resultType="String">
+		select name
+		  from users
+		 where user_id=#{user_id} and password=#{password}
+	</select>
+	
+	<select id="viewUser" resultType="pr.ticket.universe.model.users.dto.UsersDTO">
+		select name, user_id, email, created_date
+		from users
+		 where user_id=#{user_id} and password=#{password}
 	</select>
 </mapper>
