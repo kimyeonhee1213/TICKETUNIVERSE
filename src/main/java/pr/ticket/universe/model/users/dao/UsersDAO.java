@@ -11,4 +11,10 @@ public interface UsersDAO {
 	public UsersDTO viewMember(UsersDTO dto);
 	
 	public void logout(HttpSession session);
+
+	public void joinUser(UsersDTO dto);
+
+	public int idCheck(String user_id) throws Exception;
+
+	public int emailCheck(String email);
 }

@@ -18,7 +18,7 @@ public class UsersServiceImpl implements UsersService {
 	public boolean loginCheck(UsersDTO dto, HttpSession session) {
 		boolean result = usersDao.loginCheck(dto);
 		if(result) {
-			UsersDTO dto2 = viewMember(dto);
+			UsersDTO dto2 = viewUser(dto);
 			session.setAttribute("user_id", dto2.getUser_id());
 			session.setAttribute("name", dto2.getName());
 		}
@@ -26,13 +26,30 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public UsersDTO viewMember(UsersDTO dto) {
+	public UsersDTO viewUser(UsersDTO dto) {
 		return usersDao.viewMember(dto);
 	}
 
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate();
+	}
+
+	@Override
+	public void joinUser(UsersDTO dto) {
+		usersDao.joinUser(dto);
+	}
+
+	@Override
+	public int idCheck(String user_id) throws Exception{
+		int result = usersDao.idCheck(user_id);
+		return result;
+	}
+
+	@Override
+	public int emailCheck(String email) {
+		int result = usersDao.emailCheck(email);
+		return result;
 	}
 
 }

@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import pr.ticket.universe.model.users.dao.UsersDAO;
@@ -56,5 +58,35 @@ public class UsersController {
 		mav.addObject("msg","logout");
 		return mav;
 	}
+	
+	//회원가입 페이지 이동
+	@RequestMapping("join.do")
+	public String join() {
+		return "users/join";
+	}
+	
+	//회원가입 처리
+	@RequestMapping("register.do")
+	public String joinUser(@ModelAttribute UsersDTO dto) {
+		userService.joinUser(dto);
+		System.out.println("회원가입 성공");
+		return "main";
+	}
+	
+	//아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	public int idCheck(String user_id) throws Exception{
+		int result = userService.idCheck(user_id);
+		return result;
+	}
+	
+	//이메일 중복 체크
+		@ResponseBody
+		@RequestMapping(value = "/emailCheck.do", method = RequestMethod.POST)
+		public int emailCheck(String email) throws Exception{
+			int result = userService.emailCheck(email);
+			return result;
+		}
 	
 }

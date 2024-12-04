@@ -30,5 +30,22 @@ public class UsersDAOImpl implements UsersDAO {
 		
 	}
 
+	@Override
+	public void joinUser(UsersDTO dto) {
+		sqlSession.insert("users.join", dto);
+	}
+
+	@Override
+	public int idCheck(String user_id) throws Exception{
+		int result = sqlSession.selectOne("users.idCheck",user_id);
+		return result;
+	}
+
+	@Override
+	public int emailCheck(String email) {
+		int result = sqlSession.selectOne("users.emailCheck",email);
+		return result;
+	}
+
 
 }

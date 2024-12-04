@@ -14,4 +14,21 @@
 		from users
 		 where user_id=#{user_id} and password=#{password}
 	</select>
+	
+	<insert id="join">
+		insert into users (user_id, password, name, email, phone)
+		values (#{user_id}, #{password}, #{name}, #{email}, #{phone})
+	</insert>
+
+	<select id="idCheck" resultType="int">
+		select count(*)
+		from users
+		where user_id=#{user_id}
+	</select>
+	
+	<select id="emailCheck" resultType="int">
+		select count(*)
+		from users
+		where email=#{email}
+	</select>
 </mapper>
