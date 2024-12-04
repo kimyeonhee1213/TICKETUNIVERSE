@@ -1,35 +1,31 @@
 package pr.ticket.universe;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+import pr.ticket.universe.model.main.dto.MainDTO;
+import pr.ticket.universe.service.main.MainService;
+
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Inject
+	MainService mainService;
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale,Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+	@RequestMapping(value = "/", method=RequestMethod.GET)
+	public String home(MainDTO mainDTO, Model model) {
 		
-		String formattedDate = dateFormat.format(date);
+		List<MainDTO> list = mainService.mainList(mainDTO);
+		model.addAttribute("list", list);
 		
-		model.addAttribute("serverTime", formattedDate );
+		List<MainDTO> list2 = mainService.mainList2(mainDTO);
+		model.addAttribute("list2", list2);
 		
 		return "main";
 	}

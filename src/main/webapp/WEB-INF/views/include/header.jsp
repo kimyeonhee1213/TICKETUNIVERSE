@@ -26,7 +26,7 @@
                 <a class="nav-link menuLink" href="#">뮤지컬</a>
                 <ul class="submenu">
                     <li><a href="#" class="submenuLink">전체보기</a></li>
-                    <li><a href="#" class="submenuLink">오리지널</a></li>
+                    <li><a href="#" class="submenuLink">라이선스</a></li>
                     <li><a href="#" class="submenuLink">창작</a></li>
                 </ul>
             </li>
@@ -48,14 +48,14 @@
 	<ul class="nav justify-content-end">
 		<c:choose>
 			<c:when test="${sessionScope.user_id == null}">
-					<li class="nav-item"><a class="nav-link active" id="alogin" aria-current="page" href="${pageContext.request.contextPath}/users/login.do">로그인</a></li>
-					<li class="nav-item"><a class="nav-link active" id="ajoin" aria-current="page" href="#">회원가입</a></li>
-				</c:when>
-				<c:otherwise>
-					<!-- 로그인한 상태 -->
-					<li class="nav-item"><label style="padding-top: 8px;">${sessionScope.name}님이 로그인 중입니다</label></li>
-					<li class="nav-item"><a class="nav-link active" id="alogout" aria-current="page" href="${path}/users/logout.do">로그아웃</a></li>
-				</c:otherwise>
+				<li class="nav-item"><a class="nav-link active" id="alogin" aria-current="page" href="${path}/users/login.do">로그인</a></li>
+                <li class="nav-item"><a class="nav-link active" id="ajoin" aria-current="page" href="${path}/users/join.do">회원가입</a></li>
+			</c:when>
+			<c:otherwise>
+				<!-- 로그인한 상태 -->
+				<li class="nav-item"><label style="padding-top: 8px;">${sessionScope.name}님이 로그인 중입니다</label></li>
+				<li class="nav-item"><a class="nav-link active" id="alogout" aria-current="page" href="${path}/users/logout.do">로그아웃</a></li>
+			</c:otherwise>
 		</c:choose>
 	</ul>
 </div>
