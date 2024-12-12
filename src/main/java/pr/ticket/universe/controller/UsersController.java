@@ -1,5 +1,7 @@
 package pr.ticket.universe.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import pr.ticket.universe.model.main.dto.MainDTO;
 import pr.ticket.universe.model.users.dao.UsersDAO;
 import pr.ticket.universe.model.users.dto.UsersDTO;
+import pr.ticket.universe.service.main.MainService;
 import pr.ticket.universe.service.users.UsersService;
 
 @Controller
@@ -29,6 +33,8 @@ public class UsersController {
 	UsersDAO userDao;
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
+	@Inject
+	MainService mainService;
 	
 	//로그인 페이지 이동
 	@RequestMapping("login.do")
@@ -38,7 +44,7 @@ public class UsersController {
 	
 	// 로그인 처리
 	@RequestMapping("loginCheck.do")
-	public ModelAndView login_check(@ModelAttribute UsersDTO dto, HttpSession session) {
+	public ModelAndView login_check(@ModelAttribute UsersDTO dto, MainDTO mainDTO, Model model, HttpSession session) {
 		
 		UsersDTO dto2 = userService.loginCheck(dto.getUser_id());
 		ModelAndView mav = new ModelAndView();
@@ -51,6 +57,13 @@ public class UsersController {
 			if(passwordEncoder.matches(passwd, db_passwd)) { //비밀번호가 일치하면 로그인
 				session.setAttribute("user_id", dto2.getUser_id());
 				session.setAttribute("name", dto2.getName());
+				
+				//main list 가져오기
+				List<MainDTO> list = mainService.mainList(mainDTO);
+				model.addAttribute("list", list);
+				List<MainDTO> list2 = mainService.mainList2(mainDTO);
+				model.addAttribute("list2", list2);
+				
 				mav.setViewName("main");
 				mav.addObject("message", "success");
 				System.out.println("로그인 성공");
@@ -81,11 +94,18 @@ public class UsersController {
 	
 	//회원가입 처리
 	@RequestMapping("register.do")
-	public String joinUser(@ModelAttribute UsersDTO dto) {
+	public String joinUser(@ModelAttribute UsersDTO dto, MainDTO mainDTO, Model model) {
 		// 평문 비밀번호 암호화
 		String cryptEncoderPw = passwordEncoder.encode(dto.getPassword());
 		dto.setPassword(cryptEncoderPw);
 		userService.joinUser(dto);
+		
+		//main list 가져오기
+		List<MainDTO> list = mainService.mainList(mainDTO);
+		model.addAttribute("list", list);
+		List<MainDTO> list2 = mainService.mainList2(mainDTO);
+		model.addAttribute("list2", list2);
+		
 		return "main";
 	}
 	
