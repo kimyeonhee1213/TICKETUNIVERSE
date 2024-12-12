@@ -6,7 +6,7 @@ import pr.ticket.universe.model.users.dto.UsersDTO;
 
 public interface UsersDAO {
 	
-	public boolean loginCheck(UsersDTO dto);
+	public UsersDTO loginCheck(String user_id);
 	
 	public UsersDTO viewMember(UsersDTO dto);
 	
@@ -17,4 +17,6 @@ public interface UsersDAO {
 	public int idCheck(String user_id) throws Exception;
 
 	public int emailCheck(String email);
+
+	public String find_id(String name, String email) throws Exception;
 }

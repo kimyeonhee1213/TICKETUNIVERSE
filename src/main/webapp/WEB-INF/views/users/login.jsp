@@ -58,10 +58,10 @@
 									</div>
 									<form class="user"  name="form1" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="user_id"  name="user_id" placeholder="아이디">
+											<input type="text" class="form-control form-control-user" id="user_id"  name="user_id" placeholder="아이디" required>
 										</div>
 										<div class="form-group">
-											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호">
+											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호" required>
 										</div>
 										<c:if test="${message == 'error' }">
 											<div style="color: red; text-align: center; padding-bottom: 10px; font-size: 12px;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
@@ -77,13 +77,10 @@
 										</div>
 										<button id="loginBtn"  class="btn btn-primary btn-user btn-block" type="submit">로그인</button>
 										<hr>
-										<a href="index.html" class="btn btn-kakao btn-user btn-block"><i class="fab fa-google fa-fw"></i> 카카오톡으로 로그인하기</a>
-										<a href="index.html" class="btn btn-google btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> 구글로 로그인하기 </a>
+										<a href="${path}/users/findId.do" class="btn btn-kakao btn-user btn-block"><i class="fab fa-google fa-fw"></i>아이디 찾기</a>
+										<a href="${path}/users/findPw.do" class="btn btn-google btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i>비밀번호 찾기</a>
 									</form>
 									<hr>
-									<div class="text-center">
-										<a class="small" href="forgot-password.html">비밀번호를 잊어버리셨나요?</a>
-									</div>
 									<div class="text-center">
 										<a class="small" href="${path}/users/join.do">회원가입하기</a>
 									</div>

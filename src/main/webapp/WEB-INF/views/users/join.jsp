@@ -166,10 +166,10 @@
                             <form class="user" name="form1">
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름">
+                                        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름" required>
                                     </div>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-user" id="user_id" name="user_id" placeholder="아이디">
+                                        <input type="text" class="form-control form-control-user" id="user_id" name="user_id" placeholder="아이디" required>
                                     </div> 
                                     <div class="col-sm-3">
                                         <button type="button" class="btn btn-google btn-user btn-block" onclick="find_id();" id="idCheck"  value="N">아이디 중복 체크</button>
@@ -177,10 +177,10 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-4">
-                                        <input type="tel" class="form-control form-control-user" id="phone" name="phone" placeholder="전화번호">
+                                        <input type="tel" class="form-control form-control-user" id="phone" name="phone" placeholder="전화번호" required>
                                     </div>
                                     <div class="col-sm-5"> 
-                                        <input type="text" class="form-control form-control-user" id="email"  name="email" placeholder="이메일">
+                                        <input type="text" class="form-control form-control-user" id="email"  name="email" placeholder="이메일" required>
                                     </div>
                                     <div class="col-sm-3">
                                         <button type="button" class="btn btn-google btn-user btn-block" onclick="find_email();" id="emailCheck"  value="N">이메일 중복 체크</button>
@@ -188,21 +188,18 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호">
+                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"  id="passwordRepeat"  name="passwordRepeat" placeholder="비밀번호 확인">
+                                        <input type="password" class="form-control form-control-user"  id="passwordRepeat"  name="passwordRepeat" placeholder="비밀번호 확인" required>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-user btn-block"  type="submit"  id="joinBtn">회원가입</button>
                                 <hr>
-                                <a href="index.html" class="btn btn-kakao btn-user btn-block">  <i class="fab fa-google fa-fw"></i> 카카오톡으로 가입하기 </a>
-                                <a href="index.html" class="btn btn-google btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> 구글로 가입하기 </a>
+                                <a href="${path}/users/findId.do" class="btn btn-kakao btn-user btn-block"><i class="fab fa-google fa-fw"></i>아이디 찾기</a>
+								<a href="${path}/users/findPw.do" class="btn btn-google btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i>비밀번호 찾기</a>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">비밀번호를 잊어버리셨나요?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="${path}/users/login.do">이미 계정이 있나요? 로그인</a>
                             </div>

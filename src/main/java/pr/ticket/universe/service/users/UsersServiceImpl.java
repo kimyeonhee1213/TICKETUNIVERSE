@@ -1,6 +1,9 @@
 package pr.ticket.universe.service.users;
 
+import java.io.PrintWriter;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -15,14 +18,8 @@ public class UsersServiceImpl implements UsersService {
 	UsersDAO usersDao;
 
 	@Override
-	public boolean loginCheck(UsersDTO dto, HttpSession session) {
-		boolean result = usersDao.loginCheck(dto);
-		if(result) {
-			UsersDTO dto2 = viewUser(dto);
-			session.setAttribute("user_id", dto2.getUser_id());
-			session.setAttribute("name", dto2.getName());
-		}
-		return result;
+	public UsersDTO loginCheck(String user_id) {
+		return usersDao.loginCheck(user_id);
 	}
 
 	@Override
@@ -50,6 +47,24 @@ public class UsersServiceImpl implements UsersService {
 	public int emailCheck(String email) {
 		int result = usersDao.emailCheck(email);
 		return result;
+	}
+
+	@Override
+	public String find_id(HttpServletResponse response, String name, String email) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String user_id = usersDao.find_id(name, email);
+		
+		if (user_id == null) {
+			out.println("<script>");
+			out.println("alert('일치하는 정보가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return user_id;
+		}
 	}
 
 }

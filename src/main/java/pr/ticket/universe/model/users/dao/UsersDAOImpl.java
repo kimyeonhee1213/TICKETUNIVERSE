@@ -1,5 +1,8 @@
 package pr.ticket.universe.model.users.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +18,8 @@ public class UsersDAOImpl implements UsersDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public boolean loginCheck(UsersDTO dto) {
-		String name = sqlSession.selectOne("users.loginCheck", dto);
-		return (name == null) ? false : true;
+	public UsersDTO loginCheck(String user_id) {
+		return sqlSession.selectOne("users.loginCheck", user_id);
 	}
 
 	@Override
@@ -45,6 +47,15 @@ public class UsersDAOImpl implements UsersDAO {
 	public int emailCheck(String email) {
 		int result = sqlSession.selectOne("users.emailCheck",email);
 		return result;
+	}
+
+	@Override
+	public String find_id(String name, String email) throws Exception {
+		Map<String, String> map = new HashMap<>();
+		map.put("name", name);
+		map.put("email",email);
+		return sqlSession.selectOne("users.findId", map);
+		
 	}
 
 
