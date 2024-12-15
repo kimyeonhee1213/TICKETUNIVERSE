@@ -26,62 +26,64 @@
 				var exp2 = /^[가-힣]+$/; //한글 유효성검사
 				var exp3 = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; //이메일 정규식
 				
-				if(user_id == ""){
-					alert("아이디를 입력해주세요");
-					$("#user_id").focus();
-					return;
-				}
-				if(!exp1.test(user_id)){
-					alert("아이디는 영문, 숫자를 사용한 4~15자리로 입력");
-					$("#user_id").focus();
-					return;
-				}
-				if(idCheck == "N"){
-					alert("아이디 중복 체크를 하세요.");
-					return;
-				}
-
-				if(password == ""){
-					alert("비밀번호를 입력해주세요");
-					$("#password").focus();
-					return;
-				}
 				if(name == ""){
 					alert("이름을 입력해주세요");
 					$("#name").focus();
-					return;
+					return false;
 				}
 				if(!exp2.test(name)){
 					alert("이름은 한글로 입력해주세요");
 					$("#name").focus();
-					return;
+					return false;
+				}
+				
+				if(user_id == ""){
+					alert("아이디를 입력해주세요");
+					$("#user_id").focus();
+					return false;
+				}
+				if(!exp1.test(user_id)){
+					alert("아이디는 영문, 숫자를 사용한 4~15자리로 입력");
+					$("#user_id").focus();
+					return false;
+				}
+				if(idCheck == "N"){
+					alert("아이디 중복 체크를 하세요.");
+					return false;
+				}
+
+				if(phone == ""){
+					alert("전화번호를 입력해주세요");
+					$("#phone").focus();
+					return false;
 				}
 
 				if(email == ""){
 					alert("이메일을 입력해주세요");
 					$("#email").focus();
-					return;
+					return false;
 				}
 				if(!exp3.test(email)){
 					alert("이메일을 제대로 입력해주세요");
 					$("#email").focus();
-					return;
+					return false;
 				}
 				if(emailCheck == "N"){
 					alert("이메일 중복 체크를 하세요.");
-					return;
+					return false;
 				}
-				
-				if(phone == ""){
-					alert("전화번호를 입력해주세요");
-					$("#phone").focus();
-					return;
+
+				if(password == ""){
+					alert("비밀번호를 입력해주세요");
+					$("#password").focus();
+					return false;
 				}
 				
 				document.form1.action = "${path}/users/register.do";
 				document.form1.submit();
 		});
 	});
+
 	
 	function find_id() {
 		var user_id = $("#user_id").val();
