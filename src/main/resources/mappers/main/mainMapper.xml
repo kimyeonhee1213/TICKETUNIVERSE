@@ -13,10 +13,11 @@
 	<select id="mainList2" resultType="pr.ticket.universe.model.main.dto.MainDTO">
 		SELECT pf_order, pf_id, artist_id, category_id, pf_date, pf_name, pf_price, pf_time, pf_status,
 	   		   CONCAT('/resources/images/', thumb) as thumb, ticket_date,
+	   		   REPLACE(LEFT(ticket_date,10), '.', '-') as t_date,
 	   		   CONCAT(LEFT(pf_name, 12), '···') as name
 		FROM performance
 		WHERE pf_status = 0
-		ORDER BY pf_order ASC
+		ORDER BY t_date ASC
 	</select>
 	
 </mapper>

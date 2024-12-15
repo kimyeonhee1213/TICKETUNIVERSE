@@ -17,11 +17,18 @@ public class MainDTO {
 	private String thumb;
 	private String ticket_date;
 	private String name;
+	private String t_date;
 	
 	
 	
 	
 	
+	public String getT_date() {
+		return t_date;
+	}
+	public void setT_date(String t_date) {
+		this.t_date = t_date;
+	}
 	public String getName() {
 		return name;
 	}

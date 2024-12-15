@@ -199,8 +199,16 @@
   	margin-right : 4%;
 }
 
+.main_div2 a {
+	text-decoration-line: none;
+}
+
 .main_div1 {
 	border-bottom: 1px solid #e5e5e5;
+}
+
+.main_div2_1 {
+	position : relative;
 }
 
 .main_div2_2 {
@@ -264,6 +272,7 @@
 	margin-right : 17px;
 	border : 1px solid #e5e5e5;
 	text-align : center;
+	position : relative;
 }
 
 .div3_font_1 {
@@ -287,6 +296,24 @@
 .div3_font_2 {
 	text-decoration-line : none;
 	color : black;
+}
+
+.main_div3_1 div span {
+	color : #fff;
+	width : 140px;
+	height : 140px;
+	background: rgba(0, 0, 0, 0.39);
+	border: 7px solid #0080c0;
+	position : absolute;
+	top : 0;
+	left : 0;
+	right : 0;
+	border-radius: 50%;
+	margin-top : 80px;
+	margin-left : 38px;
+	font-size : 27px;
+	font-weight : bold;
+	padding-top : 45px;
 }
 
 .tkBtn {

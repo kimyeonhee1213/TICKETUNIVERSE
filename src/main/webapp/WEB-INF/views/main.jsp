@@ -68,40 +68,52 @@
 						<div class="main_div3_1" style="margin-left:65px;">
 							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
+							<p id="t_date1" style="display:none;">${list4.t_date }</p>
 							<a href="#" class="div3_font_2">${list4.name }</a>
+							<div><span class="dDay1"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '2' }">
 						<div class="main_div3_1">
 							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
+							<p id="t_date2" style="display:none;">${list4.t_date }</p>
 							<a href="#" class="div3_font_2">${list4.name }</a>
+							<div><span class="dDay2"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '3' }">
 						<div class="main_div3_1">
 							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
+							<p id="t_date3" style="display:none;">${list4.t_date }</p>
 							<a href="#" class="div3_font_2">${list4.name }</a>
+							<div><span class="dDay3"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '4' }">
 						<div class="main_div3_1">
 							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
+							<p id="t_date4" style="display:none;">${list4.t_date }</p>
 							<a href="#" class="div3_font_2">${list4.name }</a>
+							<div><span class="dDay4"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '5' }">
 						<div class="main_div3_1">
 							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
+							<p id="t_date5" style="display:none;">${list4.t_date }</p>
 							<a href="#" class="div3_font_2">${list4.name }</a>
+							<div><span class="dDay5"></span></div>
 						</div>
 					</c:if>
 				</c:if>
 			</c:forEach>
 		</div>
+		
+		<script src="/resources/js/main.js"></script>
 		
 		<div class="btnDiv">
 			<button type="button" class="tkBtn">티켓오픈 더보기 +</button>
