@@ -17,9 +17,18 @@ public class PerformanceDTO {
 	private Date modifided_date;
 	private String thumb;
 	private String ticket_date;
+	private String ticket_site;
 	
 	
 	
+	public String getTicket_site() {
+		return ticket_site;
+	}
+
+	public void setTicket_site(String ticket_site) {
+		this.ticket_site = ticket_site;
+	}
+
 	public String getPf_place() {
 		return pf_place;
 	}
@@ -138,8 +147,10 @@ public class PerformanceDTO {
 				+ ", category_id=" + category_id + ", pf_date=" + pf_date + ", pf_name=" + pf_name + ", pf_price="
 				+ pf_price + ", pf_time=" + pf_time + ", pf_status=" + pf_status + ", pf_place=" + pf_place
 				+ ", created_date=" + created_date + ", modifided_date=" + modifided_date + ", thumb=" + thumb
-				+ ", ticket_date=" + ticket_date + "]";
+				+ ", ticket_date=" + ticket_date + ", ticket_site=" + ticket_site + "]";
 	}
+
+
 	
 	
 
