@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="perform">
+	<select id="detail"
+		resultType="pr.ticket.universe.model.performance.dto.PerformanceDTO">
+		SELECT p.pf_order,
+				p.pf_id, 
+				a.artist_name, 
+				p.category_id, 
+				p.pf_date, 
+				p.pf_name, 
+				p.pf_price,
+				p.pf_time, 
+				p.pf_place, 
+				p.pf_age,
+				(CASE
+				WHEN p.pf_status = '0' THEN '공연예정'
+				WHEN p.pf_status = '1' THEN '공연중'
+				WHEN p.pf_status = '2' THEN '공연종료'
+				ELSE '미정'
+				END ) AS pf_status,
+				CONCAT('/resources/images/', p.thumb) as thumb, 
+				p.ticket_date ,
+				p.ticket_site
+				FROM
+				performance p, artist a
+				WHERE a.artist_id = p.artist_id and pf_order=#{pf_order}
+	</select>
+</mapper>

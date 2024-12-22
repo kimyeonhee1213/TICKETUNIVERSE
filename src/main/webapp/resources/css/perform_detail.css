@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+.summaryBody {
+	box-sizing: border-box;
+	display: block;
+	vertical-align: baseline;
+	margin-bottom: 10px;
+	max-width: 100%;
+	white-space: nowrap;
+}
+
+.summaryTop {
+	margin-top: 20px;
+}
+
+.summaryEnd {
+	margin-bottom: 20px;
+}
+
+.statusInfo {
+	color: red;
+}
+
+.posterBox {
+	display: inline-block;
+	margin: 30px 20px 0 0;
+	width: 400px;
+}
+
+.calendarBox {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.poster_img {
+	width: 400px;
+}
+
+.info {
+	display: inline-block;
+	width: 400px;
+	vertical-align: top;
+	margin-top: 25px;
+	margin-left: 50px;
+}
+
+.infoLabel {
+	float: left;
+	width: 120px;
+}
+
+.infoItem {
+	display: block;
+	margin-bottom: 25px;
+}
+
+#calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 5px;
+	max-width: 400px;
+	margin: 20px auto;
+}
+
+#calendar div {
+	font-weight: bold;
+	text-align: center;
+	padding: 5px 0;
+	background-color: #e0f7fa; /* 밝은 청록색 */
+	border: 1px solid #b2ebf2;
+	border-radius: 4px;
+}
+
+#calendar span {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	padding: 8px 0;
+	background-color: #ffffff; /* 흰색 */
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#calendar span:hover {
+	background-color: #f1f8e9; /* 밝은 녹색 */
+	border-color: #c5e1a5;
+}
+
+#calendar span.marked {
+	background-color: #fff3e0; /* 밝은 오렌지색 */
+	color: #ff7043; /* 부드러운 오렌지 글자색 */
+	font-weight: bold;
+	border-color: #ffccbc;
+}
+
+#calendar div.header {
+	background-color: #aed581; /* 밝은 연녹색 */
+	color: #ffffff;
+	border: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.right_area .icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: calc(100vw * ( 45/ 1920));
+	height: calc(100vw * ( 45/ 1920));
+	border-radius: 50%;
+	border: solid 2px #eaeaea;
+	background-color: #fff;
+}
+
+.icon.heart img {
+	width: calc(100vw * ( 24/ 1920));
+	height: calc(100vw * ( 24/ 1920));
+}
+
+.icon.heart.fas {
+	color: red
+}
+
+.heart {
+	transform-origin: center;
+}
+
+.heart.active img {
+	animation: animateHeart .3s linear forwards;
+}
+
+@
+keyframes animateHeart { 0%{
+	transform: scale(.2);
+}
+40
+%
+{
+transform
+:
+scale(
+1.2
+);
+}
+100
+%
+{
+transform
+:
+scale(
+1
+);
+}
+}

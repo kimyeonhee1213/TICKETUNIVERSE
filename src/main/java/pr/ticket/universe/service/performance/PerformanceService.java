@@ -1,5 +1,7 @@
 package pr.ticket.universe.service.performance;
 
-public interface PerformanceService {
+import pr.ticket.universe.model.performance.dto.PerformanceDTO;
 
+public interface PerformanceService {
+	public PerformanceDTO detail(int pf_order);
 }

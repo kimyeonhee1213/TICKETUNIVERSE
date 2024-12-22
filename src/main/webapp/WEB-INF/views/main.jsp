@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ page session="false"%>
 <html>
 <head>
@@ -25,7 +26,7 @@
 		<c:forEach var="list1" items="${list }" varStatus="status">
 			<c:if test="${list1.pf_order eq 1 }">
 				<div class="main_div1">
-					<a href="#"><img class="div1_img" src="${list1.thumb}"></a>
+					<a href="${path}/perform/detail?pf_order=${list1.pf_order}"><img class="div1_img" src="${list1.thumb}"></a>
 					<p class="list1_p1">${list1.pf_name }</p>
 					<p class="list1_p2">${list1.pf_date }</p>
 				</div>
@@ -35,26 +36,26 @@
 			<div class="main_div2_1">
 				<c:forEach var="list2" items="${list }" varStatus="status">
 					<c:if test="${list2.pf_order eq 2 }">
-						<a href="#"><img class="div2_1_img" src="${list2.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list2.pf_order}"><img class="div2_1_img" src="${list2.thumb}"></a>
 					</c:if>
 					<c:if test="${list2.pf_order eq 3 }">
-						<a href="#"><img class="div2_1_img" src="${list2.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list2.pf_order}"><img class="div2_1_img" src="${list2.thumb}"></a>
 					</c:if>
 					<c:if test="${list2.pf_order eq 4 }">
-						<a href="#"><img class="div2_1_img" src="${list2.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list2.pf_order}"><img class="div2_1_img" src="${list2.thumb}"></a>
 					</c:if>
 				</c:forEach>
 			</div>
 			<div class="main_div2_2">
 				<c:forEach var="list3" items="${list }" varStatus="status">
 					<c:if test="${list3.pf_order eq 5 }">
-						<a href="#"><img class="div2_1_img" src="${list3.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list3.pf_order}"><img class="div2_1_img" src="${list3.thumb}"></a>
 					</c:if>
 					<c:if test="${list3.pf_order eq 6 }">
-						<a href="#"><img class="div2_1_img" src="${list3.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list3.pf_order}"><img class="div2_1_img" src="${list3.thumb}"></a>
 					</c:if>
 					<c:if test="${list3.pf_order eq 7 }">
-						<a href="#"><img class="div2_1_img" src="${list3.thumb}"></a>
+						<a href="${path}/perform/detail?pf_order=${list3.pf_order}"><img class="div2_1_img" src="${list3.thumb}"></a>
 					</c:if>
 				</c:forEach>
 			</div>
@@ -66,46 +67,46 @@
 				<c:if test="${list4.pf_status eq '0' }">
 					<c:if test="${status.count eq '1' }">
 						<div class="main_div3_1" style="margin-left:65px;">
-							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
 							<p id="t_date1" style="display:none;">${list4.t_date }</p>
-							<a href="#" class="div3_font_2">${list4.name }</a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}" class="div3_font_2">${list4.name }</a>
 							<div><span class="dDay1"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '2' }">
 						<div class="main_div3_1">
-							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
 							<p id="t_date2" style="display:none;">${list4.t_date }</p>
-							<a href="#" class="div3_font_2">${list4.name }</a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}" class="div3_font_2">${list4.name }</a>
 							<div><span class="dDay2"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '3' }">
 						<div class="main_div3_1">
-							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
 							<p id="t_date3" style="display:none;">${list4.t_date }</p>
-							<a href="#" class="div3_font_2">${list4.name }</a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}" class="div3_font_2">${list4.name }</a>
 							<div><span class="dDay3"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '4' }">
 						<div class="main_div3_1">
-							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
 							<p id="t_date4" style="display:none;">${list4.t_date }</p>
-							<a href="#" class="div3_font_2">${list4.name }</a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}" class="div3_font_2">${list4.name }</a>
 							<div><span class="dDay4"></span></div>
 						</div>
 					</c:if>
 					<c:if test="${status.count eq '5' }">
 						<div class="main_div3_1">
-							<a href="#"><img class="div3_1_img" src="${list4.thumb}"></a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}"><img class="div3_1_img" src="${list4.thumb}"></a>
 							<p class="div3_font_1">${list4.ticket_date }</p>
 							<p id="t_date5" style="display:none;">${list4.t_date }</p>
-							<a href="#" class="div3_font_2">${list4.name }</a>
+							<a href="${path}/perform/detail?pf_order=${list4.pf_order}" class="div3_font_2">${list4.name }</a>
 							<div><span class="dDay5"></span></div>
 						</div>
 					</c:if>

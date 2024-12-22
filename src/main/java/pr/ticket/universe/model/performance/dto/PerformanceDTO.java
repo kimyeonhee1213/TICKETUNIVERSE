@@ -13,14 +13,32 @@ public class PerformanceDTO {
 	private String pf_time;
 	private String pf_status;
 	private String pf_place;
+	private String pf_age;
 	private Date created_date;
 	private Date modifided_date;
 	private String thumb;
 	private String ticket_date;
 	private String ticket_site;
+	private String artist_name;
 	
 	
 	
+	public String getArtist_name() {
+		return artist_name;
+	}
+
+	public void setArtist_name(String artist_name) {
+		this.artist_name = artist_name;
+	}
+
+	public String getPf_age() {
+		return pf_age;
+	}
+
+	public void setPf_age(String pf_age) {
+		this.pf_age = pf_age;
+	}
+
 	public String getTicket_site() {
 		return ticket_site;
 	}
@@ -146,12 +164,10 @@ public class PerformanceDTO {
 		return "PerformanceDTO [pf_order=" + pf_order + ", pf_id=" + pf_id + ", artist_id=" + artist_id
 				+ ", category_id=" + category_id + ", pf_date=" + pf_date + ", pf_name=" + pf_name + ", pf_price="
 				+ pf_price + ", pf_time=" + pf_time + ", pf_status=" + pf_status + ", pf_place=" + pf_place
-				+ ", created_date=" + created_date + ", modifided_date=" + modifided_date + ", thumb=" + thumb
-				+ ", ticket_date=" + ticket_date + ", ticket_site=" + ticket_site + "]";
+				+ ", pf_age=" + pf_age + ", created_date=" + created_date + ", modifided_date=" + modifided_date
+				+ ", thumb=" + thumb + ", ticket_date=" + ticket_date + ", ticket_site=" + ticket_site + "]";
 	}
 
 
-	
-	
 
 }
