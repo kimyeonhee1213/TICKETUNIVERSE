@@ -1,11 +1,13 @@
 package pr.ticket.universe.service.users;
 
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pr.ticket.universe.model.users.dao.UsersDAO;
@@ -16,6 +18,9 @@ public class UsersServiceImpl implements UsersService {
 
 	@Inject
 	UsersDAO usersDao;
+	
+	@Inject
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public UsersDTO loginCheck(String user_id) {
@@ -65,6 +70,19 @@ public class UsersServiceImpl implements UsersService {
 		} else {
 			return user_id;
 		}
+	}
+
+	@Override
+	public int checkInfo(Map<String, Object> paramMap) throws Exception  {
+		int result = usersDao.find_pw(paramMap);
+		return result;
+	}
+
+	@Override
+	public int changePw(Map<String ,Object> paramMap) throws Exception{
+		String newPw = passwordEncoder.encode((String)paramMap.get("password"));
+		paramMap.put("password", newPw);
+		return usersDao.changePw(paramMap);
 	}
 
 }

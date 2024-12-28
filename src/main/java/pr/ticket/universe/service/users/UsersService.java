@@ -1,5 +1,7 @@
 package pr.ticket.universe.service.users;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,4 +22,8 @@ public interface UsersService {
 	public int emailCheck(String email);
 	
 	public String find_id(HttpServletResponse response,String name, String email) throws  Exception;
+
+	public int checkInfo(Map<String,Object> paramMap) throws Exception;
+
+	public int changePw(Map<String,Object> paramMap)throws Exception;
 }

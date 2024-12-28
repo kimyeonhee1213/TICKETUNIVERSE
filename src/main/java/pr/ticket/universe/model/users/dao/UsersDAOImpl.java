@@ -58,5 +58,15 @@ public class UsersDAOImpl implements UsersDAO {
 		
 	}
 
+	@Override
+	public int find_pw(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("users.findPw", paramMap);
+	}
+
+	@Override
+	public int changePw(Map<String, Object> paramMap) {
+		return sqlSession.update("users.changePw", paramMap);
+	}
+
 
 }

@@ -1,5 +1,7 @@
 package pr.ticket.universe.model.users.dao;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import pr.ticket.universe.model.users.dto.UsersDTO;
@@ -19,4 +21,8 @@ public interface UsersDAO {
 	public int emailCheck(String email);
 
 	public String find_id(String name, String email) throws Exception;
+
+	public int find_pw(Map<String, Object> paramMap);
+
+	public int changePw(Map<String, Object> paramMap);
 }

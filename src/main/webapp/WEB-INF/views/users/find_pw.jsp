@@ -46,7 +46,7 @@ function findPw() {
 			  alert("이메일을 입력해주세요");
 			  return;
 		 }
-	form.action="${path}/users/find_pw.do";
+	form.action="${path}/users/find_result_pw.do";
 	form.submit();
 }
 </script>
@@ -65,7 +65,7 @@ function findPw() {
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">비밀번호 찾기</h1>
                             </div>
-                            <form class="user" name="form1">
+                            <form class="user" name="form1" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름" required>
@@ -81,7 +81,7 @@ function findPw() {
                                         <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="이메일" required>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block"  type="submit"  id="findBtn">비밀번호 찾기</button>
+                                <button class="btn btn-primary btn-user btn-block"  type="submit"  id="findBtn" onclick="findPw()">비밀번호 찾기</button>
                             </form>
                             <hr>
                             <div class="text-center">

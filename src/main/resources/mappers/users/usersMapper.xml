@@ -37,5 +37,15 @@
 		from users
 		where name=#{name} and email=#{email}
 	</select>
+	
+	<select id="findPw" resultType="int">
+		select count(*)
+		from users
+		where user_id=#{user_id} and email=#{email} and name=#{name}
+	</select>
+	
+	<update id="changePw">
+		update users set password=#{password}, modifided_date = now() where user_id=#{user_id}
+	</update>
 
 </mapper>

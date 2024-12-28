@@ -61,7 +61,7 @@ function findId() {
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">아이디 찾기</h1>
                             </div>
-                            <form class="user" name="form1">
+                            <form class="user" name="form1" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름"  required>

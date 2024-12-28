@@ -1,6 +1,8 @@
 package pr.ticket.universe.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -66,11 +68,9 @@ public class UsersController {
 				
 				mav.setViewName("main");
 				mav.addObject("message", "success");
-				System.out.println("로그인 성공");
 			}else { //일치하지 않으면 로그인 실패
 				mav.setViewName("users/login"); //뷰에 전달할 값 
 				mav.addObject("message", "error");
-				System.out.println("로그인 실패");
 			}
 		}
 		return mav;
@@ -145,4 +145,37 @@ public class UsersController {
 		model.addAttribute("user_id", userService.find_id(response, name, email));
 		return "users/find_result_id";
 	}
+	
+	//비밀번호 변경 페이지 이동
+	@RequestMapping("find_result_pw.do")
+	public String checkInfo(HttpServletResponse response, @RequestParam Map<String, Object> paramMap) throws Exception{
+		int result = userService.checkInfo(paramMap);
+		if(result == 0) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('일치하는 정보가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		}else {
+			return "users/find_result_pw";
+		}
+	}
+	
+	@RequestMapping("change_pw.do")
+	public String changePw(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+		int result = userService.changePw(paramMap);
+		if(result > 0) {
+			request.setAttribute("msg", "비밀번호 변경에 성공했습니다.");
+	        request.setAttribute("url", "/users/login.do");
+		}else {
+			request.setAttribute("msg", "비밀번호 변경에 성공했습니다.");
+	        request.setAttribute("url", "/");
+		}
+
+		return "users/alert";
+	}
+	
 }

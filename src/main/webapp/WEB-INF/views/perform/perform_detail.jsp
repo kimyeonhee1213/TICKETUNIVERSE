@@ -175,15 +175,18 @@ $(function(){
 						</script>
 					</div>
 				</div>
-				<div class="summaryEnd">
+				<!-- <div class="summaryEnd">
 					<div class="right_area">
 					  <a href="javascript:;" class="icon heart">
 					     <img src="/resources/images/heart.png" alt="찜하기">
 					  </a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </body>
+
+<!-- footer -->
+<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 </html>
