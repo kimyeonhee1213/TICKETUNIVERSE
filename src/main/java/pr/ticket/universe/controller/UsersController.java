@@ -59,6 +59,7 @@ public class UsersController {
 			if(passwordEncoder.matches(passwd, db_passwd)) { //비밀번호가 일치하면 로그인
 				session.setAttribute("user_id", dto2.getUser_id());
 				session.setAttribute("name", dto2.getName());
+				session.setAttribute("role", dto2.getRole());
 				
 				//main list 가져오기
 				List<MainDTO> list = mainService.mainList(mainDTO);

@@ -8,6 +8,17 @@ public class ArtistDTO {
 	private Date created_date;
 	private Date modifided_date;
 	private int artist_order;
+	private String thumb;
+
+	
+	
+	public String getThumb() {
+		return thumb;
+	}
+
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
 
 	public String getArtist_id() {
 		return artist_id;

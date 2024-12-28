@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="viewUser" resultType="pr.ticket.universe.model.users.dto.UsersDTO">
-		select name, user_id, email, created_date
+		select name, user_id, email, role, created_date
 		from users
 		 where user_id=#{user_id} and password=#{password}
 	</select>

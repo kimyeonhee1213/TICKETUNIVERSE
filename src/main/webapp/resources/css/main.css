@@ -62,7 +62,7 @@
 }
 
 .mainImg {
-	width : 190px;
+	width : 270px;
 	height : 115px;
 	opacity: 0.5;
 	margin-left : 40px;
@@ -75,6 +75,7 @@
 .headerDiv2 {
 	margin-left : 40px;
 	margin-right : 40px;
+	margin-top : 15px;
 	height : 100px;
 	padding-left : 10px;
 	padding-right : 30px;
@@ -329,5 +330,10 @@
 	margin-top : 50px;
 	margin-bottom : 160px;
 	margin-left : -10px;
+}
+
+.headerImg {
+	width : 170px;
+	height : 70px;
 }
 

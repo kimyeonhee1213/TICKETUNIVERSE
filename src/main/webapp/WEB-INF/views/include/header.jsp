@@ -3,7 +3,7 @@
 	
 <div class="headerDiv1">
 	<div class="hImg">
-		<img src="/resources/images/logo.jpg">
+		<a href="/"><img class="headerImg" src="/resources/images/logo.jpg"></a>
 	</div>
 	<div class="search">
 		<input class="scInput" type="text" placeholder="검색어 입력">
@@ -12,35 +12,49 @@
 </div>
 <div class="headerDiv2">
 <div class="menu">
+	<c:set var="userRole" value="${sessionScope.role}" />
 	<nav id="topMenu" >
 		<ul class="nav nav-underline">
-			<li class="nav-item topMenuLi">
-                <a class="nav-link menuLink" href="#">콘서트</a>
-                <ul class="submenu">
-                    <li><a href="#" class="submenuLink longLink">전체보기</a></li>
-                    <li><a href="#" class="submenuLink longLink">국내</a></li>
-                    <li><a href="#" class="submenuLink longLink">해외</a></li>
-                </ul>
-            </li>
-            <li class="nav-item topMenuLi">
-                <a class="nav-link menuLink" href="#">뮤지컬</a>
-                <ul class="submenu">
-                    <li><a href="#" class="submenuLink">전체보기</a></li>
-                    <li><a href="#" class="submenuLink">라이선스</a></li>
-                    <li><a href="#" class="submenuLink">창작</a></li>
-                </ul>
-            </li>
-            <li class="nav-item topMenuLi">
-                <a class="nav-link menuLink" href="#">연극</a>
-                <ul class="submenu">
-                    <li><a href="#" class="submenuLink">전체보기</a></li>
-                    <li><a href="#" class="submenuLink">대학로</a></li>
-                    <li><a href="#" class="submenuLink">기타지역</a></li>
-                </ul>
-            </li>
-            <li class="nav-item topMenuLi">
-                <a class="nav-link menuLink" href="#">아티스트</a>
-            </li>
+			<c:if test="${userRole ne '관리자' }">
+				<li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="#">콘서트</a>
+	                <ul class="submenu">
+	                    <li><a href="#" class="submenuLink longLink">전체보기</a></li>
+	                    <li><a href="#" class="submenuLink longLink">국내</a></li>
+	                    <li><a href="#" class="submenuLink longLink">해외</a></li>
+	                </ul>
+	            </li>
+	            <li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="#">뮤지컬</a>
+	                <ul class="submenu">
+	                    <li><a href="#" class="submenuLink">전체보기</a></li>
+	                    <li><a href="#" class="submenuLink">라이선스</a></li>
+	                    <li><a href="#" class="submenuLink">창작</a></li>
+	                </ul>
+	            </li>
+	            <li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="#">연극</a>
+	                <ul class="submenu">
+	                    <li><a href="#" class="submenuLink">전체보기</a></li>
+	                    <li><a href="#" class="submenuLink">대학로</a></li>
+	                    <li><a href="#" class="submenuLink">기타지역</a></li>
+	                </ul>
+	            </li>
+	            <li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="#">아티스트</a>
+	            </li>
+	        </c:if>
+	        <c:if test="${userRole eq '관리자' }">
+				<li class="nav-item topMenuLi" style="margin-left:10px;">
+	                <a class="nav-link menuLink" href="#">공연 관리</a>
+	            </li>
+	            <li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="${path}/admin/adminArtist.do">아티스트 관리</a>
+	            </li>
+	            <li class="nav-item topMenuLi">
+	                <a class="nav-link menuLink" href="#">회원 관리</a>
+	            </li>
+	        </c:if>
 		</ul>
 	</nav>
 </div>
