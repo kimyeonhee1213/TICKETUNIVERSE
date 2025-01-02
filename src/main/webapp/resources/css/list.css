@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.perform_list {
+  display: flex;
+  flex-wrap: wrap; /* 줄 바꿈을 허용 */
+  gap: 10px; /* 요소 간의 간격 */
+  margin-top: 10px;
+}
+
+.perform_list a {
+  flex: 0 0 calc(25% - 10px); /* 너비를 4등분 (25%)로 설정 */
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.thumb {
+	width: 250px;
+	height : 350px;
+	border-radius: 8px;
+}
+
+.item_list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	color:#000000;
+}
+
+.title {
+	font-weight: bold;
+}

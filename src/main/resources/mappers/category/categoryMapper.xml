@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="category">
+	
+	<select id="list" resultType="pr.ticket.universe.model.performance.dto.PerformanceDTO">
+		select p.pf_order , 
+				p.pf_id , 
+				p.pf_date , 
+				p.pf_name , 
+				p.pf_place , 
+				CONCAT('/resources/images/', p.thumb) as thumb, 
+				p.category_id , 
+				c.detail_name , 
+				c.category_id 
+		from performance p inner join categorydetail c 
+		on p.category_id = c.ct_detail_id 
+		where c.category_id = #{category_id}
+		order by pf_order
+	</select>
+	
+		<select id="list2" resultType="pr.ticket.universe.model.performance.dto.PerformanceDTO">
+		select p.pf_order , 
+				p.pf_id , 
+				p.pf_date , 
+				p.pf_name , 
+				p.pf_place , 
+				CONCAT('/resources/images/', p.thumb) as thumb, 
+				p.category_id , 
+				c.detail_name , 
+				c.category_id 
+		from performance p inner join categorydetail c 
+		on p.category_id = c.ct_detail_id 
+		where c.category_id = #{category_id} and substr(p.category_id,5) = #{sub}
+		order by pf_order
+	</select>
+</mapper>

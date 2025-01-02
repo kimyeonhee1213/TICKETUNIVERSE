@@ -29,4 +29,12 @@ public class CategoryDetailDTO {
 		this.category_id = category_id;
 	}
 
+	@Override
+	public String toString() {
+		return "CategoryDetailDTO [ct_detail_id=" + ct_detail_id + ", detail_name=" + detail_name + ", category_id="
+				+ category_id + "]";
+	}
+	
+	
+
 }

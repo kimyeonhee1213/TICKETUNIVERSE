@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 	
 <div class="headerDiv1">
 	<div class="hImg">
@@ -17,27 +18,27 @@
 		<ul class="nav nav-underline">
 			<c:if test="${userRole ne '관리자' }">
 				<li class="nav-item topMenuLi">
-	                <a class="nav-link menuLink" href="#">콘서트</a>
+	                <a class="nav-link menuLink" href="${path}/perform/list?category_id=CT1&sub=0">콘서트</a>
 	                <ul class="submenu">
-	                    <li><a href="#" class="submenuLink longLink">전체보기</a></li>
-	                    <li><a href="#" class="submenuLink longLink">국내</a></li>
-	                    <li><a href="#" class="submenuLink longLink">해외</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT1&sub=0" class="submenuLink longLink">전체보기</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT1&sub=1" class="submenuLink longLink">국내</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT1&sub=2" class="submenuLink longLink">해외</a></li>
 	                </ul>
 	            </li>
 	            <li class="nav-item topMenuLi">
-	                <a class="nav-link menuLink" href="#">뮤지컬</a>
+	                <a class="nav-link menuLink" href="${path}/perform/list?category_id=CT2&sub=0">뮤지컬</a>
 	                <ul class="submenu">
-	                    <li><a href="#" class="submenuLink">전체보기</a></li>
-	                    <li><a href="#" class="submenuLink">라이선스</a></li>
-	                    <li><a href="#" class="submenuLink">창작</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT2&sub=0" class="submenuLink">전체보기</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT2&sub=1" class="submenuLink">라이선스</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT2&sub=2" class="submenuLink">창작</a></li>
 	                </ul>
 	            </li>
 	            <li class="nav-item topMenuLi">
-	                <a class="nav-link menuLink" href="#">연극</a>
+	                <a class="nav-link menuLink" href="${path}/perform/list?category_id=CT3&sub=0">연극</a>
 	                <ul class="submenu">
-	                    <li><a href="#" class="submenuLink">전체보기</a></li>
-	                    <li><a href="#" class="submenuLink">대학로</a></li>
-	                    <li><a href="#" class="submenuLink">기타지역</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT3&sub=0" class="submenuLink">전체보기</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT3&sub=1" class="submenuLink">대학로</a></li>
+	                    <li><a href="${path}/perform/list?category_id=CT3&sub=2" class="submenuLink">기타지역</a></li>
 	                </ul>
 	            </li>
 	            <li class="nav-item topMenuLi">
