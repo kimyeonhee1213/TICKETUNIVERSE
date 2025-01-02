@@ -17,6 +17,7 @@
 	   		   CONCAT(LEFT(pf_name, 12), '···') as name
 		FROM performance
 		WHERE pf_status = 0
+		AND STR_TO_DATE(SUBSTRING_INDEX(SUBSTRING_INDEX(ticket_date, '(', 1), ' ', 1), '%Y.%m.%d') > CURDATE()
 		ORDER BY t_date ASC
 	</select>
 	
