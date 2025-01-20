@@ -58,21 +58,21 @@
 									</div>
 									<form class="user"  name="form1" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="user_id"  name="user_id" placeholder="아이디" required>
+											<input type="text" class="form-control form-control-user" id="user_id"  name="user_id" placeholder="아이디" value="${rememberedId != null ? rememberedId : ''}" required>
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호" required>
 										</div>
-										<c:if test="${message == 'error' }">
-											<div style="color: red; text-align: center; padding-bottom: 10px; font-size: 12px;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+										<c:if test="${param.message == 'nologin'}">
+											<div style="color: red; text-align: center; padding-bottom: 10px;">로그인 하신 후 사용하세요.</div>
 										</c:if>
-										<c:if test="${message == 'logout' }">
-											<div style="color: blue; text-align: center; padding-bottom: 10px; font-size: 12px;">로그아웃 처리되었습니다.</div>
+										<c:if test="${message == 'error'}">
+											<div style="color: red; text-align: center; padding-bottom: 10px; font-size: 12px;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 										</c:if>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
-												<input type="checkbox" class="custom-control-input" id="customCheck">
-											    <label class="custom-control-label" for="customCheck">아이디 기억하기</label>
+												<input type="checkbox" class="custom-control-input" id="rememberMe" name="rememberMe" checked>
+											    <label class="custom-control-label" for="rememberMe">아이디 기억하기</label>
 											</div>
 										</div>
 										<button id="loginBtn"  class="btn btn-primary btn-user btn-block" type="submit">로그인</button>

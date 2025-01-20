@@ -1,10 +1,12 @@
 package pr.ticket.universe.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -40,13 +42,28 @@ public class UsersController {
 	
 	//로그인 페이지 이동
 	@RequestMapping("login.do")
-	public String login() {
+	public String login(HttpServletRequest request, Model model) {
+		// 쿠키에서 저장된 아이디를 가져오기
+        Cookie[] cookies = request.getCookies();
+        String rememberedId = null;
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("rememberedId".equals(cookie.getName())) {
+                    rememberedId = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        model.addAttribute("rememberedId", rememberedId); // 뷰에 아이디 전달
 		return "users/login";
 	}
 	
 	// 로그인 처리
 	@RequestMapping("loginCheck.do")
-	public ModelAndView login_check(@ModelAttribute UsersDTO dto, MainDTO mainDTO, Model model, HttpSession session) {
+	public ModelAndView login_check(@ModelAttribute UsersDTO dto, MainDTO mainDTO, HttpServletResponse response,
+			Model model, HttpSession session,  boolean rememberMe, String user_id) {
 		
 		UsersDTO dto2 = userService.loginCheck(dto.getUser_id());
 		ModelAndView mav = new ModelAndView();
@@ -61,6 +78,17 @@ public class UsersController {
 				session.setAttribute("name", dto2.getName());
 				session.setAttribute("role", dto2.getRole());
 				
+				if (rememberMe) {
+	                Cookie cookie = new Cookie("rememberedId", user_id);
+	                cookie.setMaxAge(60 * 60 * 24 * 7); // 7일간 유지
+	                response.addCookie(cookie);
+	            } else {
+	                // 쿠키 제거
+	                Cookie cookie = new Cookie("rememberedId", null);
+	                cookie.setMaxAge(0);
+	                response.addCookie(cookie);
+	            }
+				
 				//main list 가져오기
 				List<MainDTO> list = mainService.mainList(mainDTO);
 				model.addAttribute("list", list);
@@ -73,24 +101,47 @@ public class UsersController {
 				mav.setViewName("users/login"); //뷰에 전달할 값 
 				mav.addObject("message", "error");
 			}
+		}else {
+			mav.setViewName("users/login"); //뷰에 전달할 값 
+			mav.addObject("message", "error");
 		}
 		return mav;
 	}
 	
 	//로그아웃 처리
 	@RequestMapping("logout.do")
-	public ModelAndView logout(HttpSession session) {
-		userService.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("users/login");
-		mav.addObject("msg","logout");
-		return mav;
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		// 모든 세션을 무효화
+        request.getSession().invalidate();
+     // rememberedId 쿠키는 유지하고, 다른 쿠키 삭제가 필요할 경우 아래 추가
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (!"rememberedId".equals(cookie.getName())) {
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+            }
+        }
+
+        // 로그인 페이지로 리다이렉트
+        return "redirect:login.do";
 	}
 	
 	//회원가입 페이지 이동
 	@RequestMapping("join.do")
 	public String join() {
 		return "users/join";
+	}
+	
+	//회원정보 수정 페이지 이동
+	@RequestMapping("info.do")
+	public String info(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("user_id");
+		List<UsersDTO> list = userService.info(userId);
+		model.addAttribute("list", list);
+		return "users/profile";
 	}
 	
 	//회원가입 처리
@@ -171,11 +222,32 @@ public class UsersController {
 		if(result > 0) {
 			request.setAttribute("msg", "비밀번호 변경에 성공했습니다.");
 	        request.setAttribute("url", "/users/login.do");
+	        
 		}else {
-			request.setAttribute("msg", "비밀번호 변경에 성공했습니다.");
+			request.setAttribute("msg", "비밀번호 변경에 실패했습니다.");
 	        request.setAttribute("url", "/");
 		}
 
+		return "users/alert";
+	}
+	
+	@RequestMapping("update.do")
+	public String updateInfo(HttpServletRequest request, HttpServletResponse response ,UsersDTO dto) throws IOException {
+		// 평문 비밀번호 암호화
+		String cryptEncoderPw = passwordEncoder.encode(dto.getPassword());
+		dto.setPassword(cryptEncoderPw);
+		int result = userService.updateInfo(dto);
+		if(result > 0) {
+			request.setAttribute("msg", "회원정보를 수정했습니다");
+			// 모든 세션을 무효화
+	        request.getSession().invalidate();
+			request.setAttribute("url", "/");			
+		}else {
+			request.setAttribute("msg", "회원정보 수정에 실패했습니다");
+			// 모든 세션을 무효화
+	        request.getSession().invalidate();
+			request.setAttribute("url", "/");			
+		}
 		return "users/alert";
 	}
 	

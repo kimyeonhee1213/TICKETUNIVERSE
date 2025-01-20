@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Custom styles for this template-->
  <link href="/resources/css/join.css" rel="stylesheet">
+ <script src="/resources/js/validation.js"></script>
  <script>
 	$(function() {
 		 $("#joinBtn").click(function() {
@@ -22,27 +23,23 @@
 				var idCheck = $("#idCheck").val();
 				var emailCheck = $("#emailCheck").val();
 				
-				var exp1 = /^[A-Za-z0-9]{4,15}$/; //아이디 영문자, 숫자 포함 4~15자리
-				var exp2 = /^[가-힣]+$/; //한글 유효성검사
-				var exp3 = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; //이메일 정규식
-				
-				if(name == ""){
+				if(isEmpty(name)){
 					alert("이름을 입력해주세요");
 					$("#name").focus();
 					return false;
 				}
-				if(!exp2.test(name)){
+				if(!isValidKor(name)){
 					alert("이름은 한글로 입력해주세요");
 					$("#name").focus();
 					return false;
 				}
 				
-				if(user_id == ""){
+				if(isEmpty(user_id)){
 					alert("아이디를 입력해주세요");
 					$("#user_id").focus();
 					return false;
 				}
-				if(!exp1.test(user_id)){
+				if(!isValidId(user_id)){
 					alert("아이디는 영문, 숫자를 사용한 4~15자리로 입력");
 					$("#user_id").focus();
 					return false;
@@ -52,18 +49,18 @@
 					return false;
 				}
 
-				if(phone == ""){
+				if(isEmpty(phone)){
 					alert("전화번호를 입력해주세요");
 					$("#phone").focus();
 					return false;
 				}
 
-				if(email == ""){
+				if(isEmpty(email)){
 					alert("이메일을 입력해주세요");
 					$("#email").focus();
 					return false;
 				}
-				if(!exp3.test(email)){
+				if(!isValidEmail(email)){
 					alert("이메일을 제대로 입력해주세요");
 					$("#email").focus();
 					return false;
@@ -73,7 +70,7 @@
 					return false;
 				}
 
-				if(password == ""){
+				if(isEmpty(password)){
 					alert("비밀번호를 입력해주세요");
 					$("#password").focus();
 					return false;
@@ -87,15 +84,14 @@
 	
 	function find_id() {
 		var user_id = $("#user_id").val();
-		var exp1 = /^[A-Za-z0-9]{4,15}$/; //아이디 영문자, 숫자 포함 4~15자리
 		
-		if(user_id == ""){
+		if(isEmpty(user_id)){
 			alert("아이디를 입력해주세요");
 			$("#user_id").focus();
 			return;
 		}
 		
-		if(!exp1.test(user_id)){
+		if(!isValidId(user_id)){
 			alert("아이디는 영문, 숫자를 사용한 4~15자리로 입력");
 			$("#user_id").focus();
 			return;
@@ -120,15 +116,14 @@
 	function find_email() {
 		
 		var email = $("#email").val();
-		var exp3 = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; //이메일 정규식
 		
-		if(email == ""){
+		if(isEmpty(email)){
 			alert("이메일을 입력해주세요");
 			$("#email").focus();
 			return;
 		}
 		
-		if(!exp3.test(email)){
+		if(!isValidEmail(email)){
 			alert("이메일을 제대로 입력해주세요");
 			$("#email").focus();
 			return;

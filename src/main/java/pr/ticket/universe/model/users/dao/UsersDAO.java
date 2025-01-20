@@ -1,5 +1,6 @@
 package pr.ticket.universe.model.users.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -25,4 +26,8 @@ public interface UsersDAO {
 	public int find_pw(Map<String, Object> paramMap);
 
 	public int changePw(Map<String, Object> paramMap);
+
+	public List<UsersDTO> info(String userId);
+
+	public int updateInfo(UsersDTO dto);
 }

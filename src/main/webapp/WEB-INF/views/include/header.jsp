@@ -69,6 +69,9 @@
 			<c:otherwise>
 				<!-- 로그인한 상태 -->
 				<li class="nav-item"><label style="padding-top: 8px;">${sessionScope.name}님이 로그인 중입니다</label></li>
+				<c:if test="${userRole ne '관리자'}">
+					<li class="nav-item"><a class="nav-link active" id="alogout" aria-current="page" href="${path}/users/info.do">마이페이지</a></li>
+				</c:if>
 				<li class="nav-item"><a class="nav-link active" id="alogout" aria-current="page" href="${path}/users/logout.do">로그아웃</a></li>
 			</c:otherwise>
 		</c:choose>

@@ -1,6 +1,7 @@
 package pr.ticket.universe.model.users.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -66,6 +67,16 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
 		return sqlSession.update("users.changePw", paramMap);
+	}
+
+	@Override
+	public List<UsersDTO> info(String userId) {
+		return sqlSession.selectList("users.info", userId);
+	}
+
+	@Override
+	public int updateInfo(UsersDTO dto) {
+		return sqlSession.update("users.update_info", dto);
 	}
 
 

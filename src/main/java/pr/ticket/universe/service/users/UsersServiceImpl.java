@@ -1,6 +1,7 @@
 package pr.ticket.universe.service.users;
 
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -30,11 +31,6 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersDTO viewUser(UsersDTO dto) {
 		return usersDao.viewMember(dto);
-	}
-
-	@Override
-	public void logout(HttpSession session) {
-		session.invalidate();
 	}
 
 	@Override
@@ -83,6 +79,16 @@ public class UsersServiceImpl implements UsersService {
 		String newPw = passwordEncoder.encode((String)paramMap.get("password"));
 		paramMap.put("password", newPw);
 		return usersDao.changePw(paramMap);
+	}
+
+	@Override
+	public List<UsersDTO> info(String userId) {
+		return usersDao.info(userId);
+	}
+
+	@Override
+	public int updateInfo(UsersDTO dto) {
+		return usersDao.updateInfo(dto);
 	}
 
 }

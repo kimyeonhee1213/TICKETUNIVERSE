@@ -28,6 +28,20 @@
 	
 	<context:component-scan base-package="pr.ticket.universe" />
 	
+	<!-- 인터셉터 빈을 등록 -->
+	<beans:bean id="loginInterceptor" class="pr.ticket.universe.interceptor.LoginInterceptor">
+	</beans:bean>
+	
+	<!-- 인터셉터 호출을 위한 url mapping처리 -->
+	<interceptors>
+		<interceptor>
+		<mapping path="/users/update.do"/>
+		<mapping path="/users/info.do"/>
+		<mapping path="/admin/**"/>
+		<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	
 	
 </beans:beans>
