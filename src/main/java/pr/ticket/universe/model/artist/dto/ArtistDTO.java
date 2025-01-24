@@ -9,9 +9,37 @@ public class ArtistDTO {
 	private Date modifided_date;
 	private int artist_order;
 	private String thumb;
+	private String max_id;
+	private String likeArtist;
+	private String likeCheck;
 
 	
 	
+	
+	public String getLikeArtist() {
+		return likeArtist;
+	}
+
+	public void setLikeArtist(String likeArtist) {
+		this.likeArtist = likeArtist;
+	}
+
+	public String getLikeCheck() {
+		return likeCheck;
+	}
+
+	public void setLikeCheck(String likeCheck) {
+		this.likeCheck = likeCheck;
+	}
+
+	public String getMax_id() {
+		return max_id;
+	}
+
+	public void setMax_id(String max_id) {
+		this.max_id = max_id;
+	}
+
 	public String getThumb() {
 		return thumb;
 	}

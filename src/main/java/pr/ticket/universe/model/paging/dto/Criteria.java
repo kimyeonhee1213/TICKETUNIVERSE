@@ -5,8 +5,17 @@ public class Criteria {
 	private int page;                //현재 페이지 번호
     private int perPageNum;          //한 페이지 당 게시물 수
     private String keyword, option;  //검색 시 페이징 처리 유지를 위한 검색조건들
+    private String user_id;
+    
+    
 
-    public String getKeyword() {
+    public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getKeyword() {
         return keyword;
     }
     public void setKeyword(String keyword) {

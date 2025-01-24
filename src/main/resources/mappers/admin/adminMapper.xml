@@ -5,21 +5,30 @@
 <mapper namespace="admin">
 	
 	<select id="artistList" resultType="pr.ticket.universe.model.artist.dto.ArtistDTO">
-	    SELECT artist_id, artist_name, created_date, modifided_date, artist_order,
-				   CONCAT('/resources/images/', thumb) as thumb
-	    FROM artist
+	    SELECT a.artist_id, a.artist_name, a.created_date, a.modifided_date, a.artist_order,
+			   CONCAT('/resources/images/', a.thumb) as thumb, d.artist_id as likeArtist,
+			   CASE d.artist_id
+			   	WHEN d.artist_id IS NULL THEN 'Y'
+			   	ELSE 'N'
+			   END as likeCheck
+	    FROM artist a
+	    LEFT JOIN (SELECT artist_id FROM dibs WHERE user_id = #{user_id}) d ON d.artist_id = a.artist_id
 	    WHERE 1=1
-	    AND artist_id != 'AR0'
-	    <!-- <if test="keyword != null or keyword != ''">
-	    AND artist_name like CONCAT('%', #{keyword}, '%')
-	    </if> -->
-	    ORDER BY artist_order ASC
+	    AND a.artist_id != 'AR0'
+	    <if test="keyword != null">
+	    AND a.artist_name like CONCAT('%', #{keyword}, '%')
+	    </if>
+	    ORDER BY a.artist_order DESC
 	    LIMIT #{pageStart}, #{perPageNum}
 	</select>
 
 	<select id="listCount" resultType="int">
 		SELECT count(artist_id)
 		FROM artist
+		WHERE 1=1
+		<if test="keyword != null">
+	    AND artist_name like CONCAT('%', #{keyword}, '%')
+	    </if>
 	</select>
 	
 	<!-- 아티스트 수정 페이지 이동 -->
@@ -30,11 +39,85 @@
 	    WHERE artist_order = #{artist_order} 
 	</select>
 	
+	<!-- 아티스트 수정 -->
+	<update id="artistUpdate" parameterType="pr.ticket.universe.model.artist.dto.ArtistDTO">
+		UPDATE artist
+		SET artist_name = #{artist_name}
+		WHERE artist_order = #{artist_order}
+	</update>
+	
+	<!-- ARTIST MAX ID 조회 -->
+	<select id="artistMaxId" resultType="pr.ticket.universe.model.artist.dto.ArtistDTO">
+		SELECT artist_id, CONCAT('AR', SUBSTRING(artist_id, 3)+1) as max_id, one.artist_order+1 as artist_order
+		FROM (SELECT max(artist_order) as artist_order FROM artist WHERE artist_id != 'AR0') as one
+		INNER JOIN artist on one.artist_order = artist.artist_order
+	</select>
+	
+	<!-- 아티스트 추가 -->
+	<insert id="artistInsert">
+		INSERT INTO artist
+		VALUES (
+				 #{max_id},
+				 #{artist_name},
+				 now(),
+				 null,
+				 #{artist_order},
+				 #{thumb}
+				)
+	</insert>
+	
+	<!-- 첨부파일 업로드 -->
+	<insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MP_FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			null,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+	</insert>
+	
+	<!-- 첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT FILE_NO,
+			   ORG_FILE_NAME,
+			   ROUND(FILE_SIZE/1024,1) as FILE_SIZE
+		FROM MP_FILE
+		WHERE BNO = #{BNO}
+		AND DEL_GB = 'N'
+	</select> 
+	
 	<!-- 아티스트 삭제 -->
 	<delete id="artistDelete">
 		DELETE
 		FROM artist
 		WHERE artist_order = #{artist_order}
+	</delete>
+	
+	<!-- 아티스트 찜 저장 -->
+	<insert id="likeUp">
+		INSERT INTO dibs(
+			user_id,
+			artist_id,
+			created_date
+		)VALUES(
+			#{userId},
+			#{artistId},
+			now()
+		)
+	</insert>
+	
+	<!-- 아티스트 찜 삭제 -->
+	<delete id="likeDown">
+		DELETE FROM dibs
+		WHERE user_id = #{userId}
+		AND artist_id = #{artistId}
 	</delete>
 	
 </mapper>

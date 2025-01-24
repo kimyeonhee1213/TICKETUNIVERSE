@@ -28,19 +28,21 @@
 				alert("${alertMsg}");
 			</script>
 		</c:if>
-		<form action="artistUpdate.do" method="post">
+		<form action="artistInsert.do" method="post" name="writeForm" enctype="multipart/form-data">
+		<input type="hidden" name="max_id" value="${data.max_id }">
 		<input type="hidden" name="artist_order" value="${data.artist_order }">
 		<div class="summary">
 			<div class="summaryTop">
-				<input type="text" name="artist_name" value="${data.artist_name }">
+				아티스트명 : <input type="text" name="artist_name">
 			</div>
 			<hr class="hr-1">
 			<div class="summaryBody">
-				<div class="posterBox">
+				<%-- <div class="posterBox">
 					<img class="poster_img" src="${data.thumb}">
-				</div>
+				</div> --%>
+				<input type="file" name="file">
 				<div class="info">
-					<input type="submit" value="수정">
+					<input type="submit" value="등록">
 					<input type="button" value="목록" onclick="location.href='adminArtist.do'">
 				</div>
 			</div>

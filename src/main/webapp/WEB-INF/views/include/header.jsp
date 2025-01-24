@@ -42,7 +42,7 @@
 	                </ul>
 	            </li>
 	            <li class="nav-item topMenuLi">
-	                <a class="nav-link menuLink" href="#">아티스트</a>
+	                <a class="nav-link menuLink" href="${path}/admin/adminArtist.do">아티스트</a>
 	            </li>
 	        </c:if>
 	        <c:if test="${userRole eq '관리자' }">

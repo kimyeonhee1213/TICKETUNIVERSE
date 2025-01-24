@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.summaryBody {
+	box-sizing: border-box;
+	display: block;
+	vertical-align: baseline;
+	margin-bottom: 10px;
+	max-width: 100%;
+	white-space: nowrap;
+}
+
+.summaryTop {
+	margin-top: 20px;
+}
+
+.summaryEnd {
+	margin-bottom: 20px;
+}
+
+.statusInfo {
+	color: red;
+}
+
+.posterBox {
+	display: inline-block;
+	margin: 30px 20px 0 0;
+	width: 400px;
+}
+
+.poster_img {
+	width: 400px;
+}
+
+.info {
+	display: inline-block;
+	width: 400px;
+	vertical-align: top;
+	margin-top: 25px;
+	margin-left: 50px;
+}
+
+.infoLabel {
+	float: left;
+	width: 120px;
+}
+
+.infoItem {
+	display: block;
+	margin-bottom: 25px;
+}

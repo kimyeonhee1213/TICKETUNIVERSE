@@ -23,16 +23,10 @@
 <div class="container">
 	<br><br><br>
 	<div class="row">
-		<c:if test="${not empty alertMsg }">
-			<script>
-				alert("${alertMsg}");
-			</script>
-		</c:if>
-		<form action="artistUpdate.do" method="post">
 		<input type="hidden" name="artist_order" value="${data.artist_order }">
 		<div class="summary">
 			<div class="summaryTop">
-				<input type="text" name="artist_name" value="${data.artist_name }">
+				<h1>${data.artist_name}</h1>
 			</div>
 			<hr class="hr-1">
 			<div class="summaryBody">
@@ -40,12 +34,10 @@
 					<img class="poster_img" src="${data.thumb}">
 				</div>
 				<div class="info">
-					<input type="submit" value="수정">
 					<input type="button" value="목록" onclick="location.href='adminArtist.do'">
 				</div>
 			</div>
 		</div>
-		</form>
 	</div>
 </div>
 </body>
