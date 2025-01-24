@@ -142,9 +142,18 @@
 							</c:choose>
 						</div>
 						<div class="atDiv_2">
-							<a href="#" class="atDiv_name" onclick="location.href='adminArtistUpdatePage.do?artist_order=${data.artist_order}'">
-								${data.artist_name }
-							</a>
+							<c:choose>
+							 <c:when test="${userId eq 'admin' }">
+								<a href="#" class="atDiv_name" onclick="location.href='adminArtistUpdatePage.do?artist_order=${data.artist_order}'">
+									${data.artist_name }
+								</a>
+							 </c:when>
+							 <c:otherwise>
+							 	<a href="#" class="atDiv_name" onclick="location.href='adminArtistDetailPage.do?artist_order=${data.artist_order}'">
+									${data.artist_name }
+								</a>
+							 </c:otherwise>
+							</c:choose>
 						</div>
 						<c:if test="${userId eq 'admin' }">
 							<div class="moreDiv">
